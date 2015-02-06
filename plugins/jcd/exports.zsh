@@ -20,17 +20,6 @@ export GPG_TTY
 export M2_REPO="$HOME/.m2/repository"
 
 #-----------------------------------------------------------------------------#
-# PYTHONPATH                                                                  #
-#-----------------------------------------------------------------------------#
-
-# Local python modules
-_safe_export_pythonpath "$HOME/.python"
-_safe_export_pythonpath "$HOME/.python/lib/python"
-
-# Needed for rlimit and other junk stuff...
-_safe_export_path "$HOME/.python/bin"
-
-#-----------------------------------------------------------------------------#
 # Java                                                                        #
 #-----------------------------------------------------------------------------#
 
