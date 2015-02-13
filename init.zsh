@@ -1,4 +1,5 @@
 SOURCE=${0%/*}
+SHORT_HOST=`hostname |cut -d. -f1`
 
 source $SOURCE/plugins/colored-ls/colored-ls.plugin.zsh
 
@@ -12,4 +13,6 @@ source $SOURCE/plugins/jcd/functions.zsh
 source $SOURCE/plugins/jcd/history.zsh
 source $SOURCE/plugins/jcd/options.zsh
 
-source $SOURCE/plugins/local-cfg/local-cfg.plugin.zsh
+if [ -f "$HOME/.customrc-$SHORT_HOST" ]; then
+    source "$HOME/.customrc-$SHORT_HOST"
+fi
