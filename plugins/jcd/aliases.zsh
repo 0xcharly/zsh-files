@@ -15,7 +15,7 @@ alias .git='git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
 alias tmux='tmux -2'
 alias tree='tree -C'
 alias bt='bugtool'
-alias tns='bugtool dir |grep "^....-... . delay"'
+alias tns='clear && $HOME/lstn'
 alias follow='bugtool subscribe'
 
 function bt-mail {
