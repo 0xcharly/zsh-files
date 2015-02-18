@@ -15,8 +15,6 @@ source $SOURCE/plugins/jcd/grep.zsh
 source $SOURCE/plugins/jcd/options.zsh
 source $SOURCE/plugins/jcd/spectrum.zsh
 
-source $SOURCE/plugins/jcd/temp-functions.zsh
-
 if [ -f "$HOME/.customrc-$SHORT_HOST" ]; then
     source "$HOME/.customrc-$SHORT_HOST"
 fi
