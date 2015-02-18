@@ -1,4 +1,4 @@
-case `uname` in
+case `uname -s` in
     CYGWIN*)
         export SHELLOPTS='igncr'
         ;;

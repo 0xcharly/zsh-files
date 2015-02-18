@@ -11,7 +11,7 @@ export GPG_TTY
 export M2_REPO="$HOME/.m2/repository"
 
 # Java
-if [ "x`uname - s`" = "xDarwin" ]; then
+if [ "x`uname -s`" = "xDarwin" ]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
@@ -21,8 +21,8 @@ export LC_ALL=en_US.UTF-8
 export LANG='en_US.UTF-8'
 
 # Term
-case `uname` in
-    *CYGWIN*)
+case `uname -s` in
+    CYGWIN*)
         export TERM=xterm-256color
         ;;
     *)
