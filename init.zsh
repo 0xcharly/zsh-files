@@ -11,7 +11,9 @@ source $SOURCE/plugins/jcd/aliases.zsh
 source $SOURCE/plugins/jcd/exports.zsh
 source $SOURCE/plugins/jcd/functions.zsh
 source $SOURCE/plugins/jcd/history.zsh
+source $SOURCE/plugins/jcd/grep.zsh
 source $SOURCE/plugins/jcd/options.zsh
+source $SOURCE/plugins/jcd/spectrum.zsh
 
 if [ -f "$HOME/.customrc-$SHORT_HOST" ]; then
     source "$HOME/.customrc-$SHORT_HOST"

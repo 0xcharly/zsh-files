@@ -1,13 +1,17 @@
+# History configuration
+
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.history
 
-unsetopt APPEND_HISTORY
-unsetopt SHARE_HISTORY
-setopt EXTENDED_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_FIND_NO_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_NO_STORE        # Do not store 'history' nor 'fc' commands
-setopt NO_HIST_BEEP
+unsetopt append_history
+unsetopt share_history
+
+setopt extended_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_expire_dups_first
+setopt hist_find_no_dups
+setopt hist_reduce_blanks
+setopt hist_no_store        # Do not store 'history' nor 'fc' commands
+setopt no_hist_beep
