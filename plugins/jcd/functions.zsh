@@ -8,6 +8,11 @@ function f() {
     fi
 }
 
+# Fix autoenv conflict with oh-my-git
+function cd() {
+    builtin cd $*
+}
+
 # Get IP
 function ip-addr() {
     wget -qO- http://ipecho.net/plain
