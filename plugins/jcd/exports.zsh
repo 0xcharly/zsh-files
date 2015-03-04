@@ -3,6 +3,9 @@ export FULLNAME="Jean-Charles Delay"
 export EMAIL="delay@adacore.com"
 export EDITOR=vi
 
+# Disallow automatic window renaming in tmux
+export DISABLE_AUTO_TITLE=true
+
 # GPG
 GPG_TTY=$(tty)
 export GPG_TTY
