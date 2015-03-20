@@ -5,6 +5,7 @@ export EDITOR=vi
 
 # Disallow automatic window renaming in tmux
 export DISABLE_AUTO_TITLE=true
+export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # GPG
 GPG_TTY=$(tty)
