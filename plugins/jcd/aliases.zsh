@@ -5,7 +5,7 @@ alias ssg='ssh -l gnatmail'
 alias ck='ssh ssh.gnat.com'
 alias ch='ssh ssh.eu.adacore.com'
 
-alias cl='cl'
+alias cl='cless'
 alias ,l='|less'
 
 # Applications aliases
