@@ -5,6 +5,9 @@ alias ssg='ssh -l gnatmail'
 alias ck='ssh ssh.gnat.com'
 alias ch='ssh ssh.eu.adacore.com'
 
+alias cl='cl'
+alias ,l='|less'
+
 # Applications aliases
 alias fix='open -a "MacPAR deLuxe"'  # Open a .par2 file
 
