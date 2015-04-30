@@ -176,7 +176,7 @@ function custom_build_r_prompt {
             _write $left_bg_color red "$omg_ready_to_commit_symbol  "
         fi
 
-        if [[ $action ]]; then
+        if [[ -n $action ]]; then
             _write $left_bg_color red "$omg_has_action_in_progress_symbol $action  "
         fi
 
