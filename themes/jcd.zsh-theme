@@ -54,19 +54,24 @@ function custom_build_prompt {
         esac
     fi
 
+    local local_prompt_color=150    # green
+    local error_prompt_color=166    # red
+    local repos_prompt_color=110    # blue
+    local cloud_prompt_color=172    # yellow
+
     # Context
     if [[ $retval -ne 0 ]]; then
-        _write 166 235 "   ($retval) "
-        _write 235 166 ""
+        _write $error_prompt_color 235 "   ($retval) "
+        _write 235 $error_prompt_color ""
     elif [[ $is_a_git_repo == true ]]; then
-        _write 39 235 "   "
-        _write 235 39 ""
+        _write $repos_prompt_color 235 "   "
+        _write 235 $repos_prompt_color ""
     elif [[ $SESSION_TYPE == "local" ]]; then
-        _write 40 235 "   "
-        _write 235 40 ""
+        _write $local_prompt_color 235 "   "
+        _write 235 $local_prompt_color ""
     else
-        _write 172 235 "   (%m) "
-        _write 235 172 ""
+        _write $cloud_prompt_color 235 "   (%m) "
+        _write 235 $cloud_prompt_color ""
     fi
 
     # Path or repository name
@@ -75,11 +80,10 @@ function custom_build_prompt {
     else
         _write 235 251 ' %1~ '
     fi
-    _write 252 235 ""
+    _write 241 235 ""
 
     # End
-    _write 252 235 ' $ '
-    _write "" 252 ""
+    _write "" 241 ""
 }
 
 function custom_build_r_prompt {
@@ -115,9 +119,9 @@ function custom_build_r_prompt {
     local virtualenv_bg=""
 
     # Colors
-    local left_bg_color=237        # grey
+    local left_bg_color=236        # grey
     local middle_bg_color=252      # white
-    local right_bg_color=93        # purple
+    local right_bg_color=208       # orange
 
     local state_bg=""
     local virtualenv_bg=""
@@ -131,11 +135,9 @@ function custom_build_r_prompt {
     if [[ $is_a_git_repo == true ]]; then
         virtualenv_bg=$middle_bg_color
 
-        if [[ $has_stashes == true || $has_untracked_files == true || $has_modifications == true || $has_deletions == true || $has_adds == true || $has_modifications_cached == true || $has_deletions_cached == true || $ready_to_commit == true || $action == true ]]; then
-            _write "" $left_bg_color ""
-            _write $left_bg_color "" " "
-            state_bg=$left_bg_color
-        fi
+        _write "" $left_bg_color ""
+        _write $left_bg_color "" " "
+        state_bg=$left_bg_color
 
         if [[ $has_stashes == true ]]; then
             _write $left_bg_color yellow "$omg_has_stashes_symbol  "
@@ -223,7 +225,7 @@ function custom_build_r_prompt {
     if [[ -n $virtualenv && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
         _write "$virtualenv_bg" $right_bg_color " "
         _write $right_bg_color "" " "
-        _write $right_bg_color 254 "`basename $virtualenv` "
+        _write $right_bg_color 235 "`basename $virtualenv` "
     else
         _write $middle_bg_color "" " "
     fi
