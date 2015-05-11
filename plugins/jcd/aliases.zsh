@@ -39,8 +39,8 @@ case `uname -s` in
     alias l='ls -F'
     ;;
   FreeBSD|Darwin)
-    alias ls='ls -F --color=always -G'
-    alias l='ls -F -G --color=always -a -l'
+    alias ls='ls -F -G'
+    alias l='ls -F -G -a -l'
     alias grep='grep --color=auto'
     ;;
   *)
