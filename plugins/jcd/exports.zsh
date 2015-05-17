@@ -7,6 +7,9 @@ export EDITOR=vi
 export DISABLE_AUTO_TITLE=true
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
+# Disallow Oh-My-ZSH auto updates
+export DISABLE_AUTO_UPDATE=true
+
 # GPG
 GPG_TTY=$(tty)
 export GPG_TTY
