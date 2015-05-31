@@ -4,11 +4,11 @@ export EMAIL="delay@adacore.com"
 export EDITOR=vi
 
 # Disallow automatic window renaming in tmux
-export DISABLE_AUTO_TITLE=true
+export DISABLE_AUTO_TITLE="true"
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Disallow Oh-My-ZSH auto updates
-export DISABLE_AUTO_UPDATE=true
+export DISABLE_AUTO_UPDATE="true"
 
 # GPG
 GPG_TTY=$(tty)
