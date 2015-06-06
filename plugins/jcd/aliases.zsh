@@ -3,6 +3,7 @@ alias ssh='TERM=xterm-256color ssh'
 alias ssr='ssh -l root'
 alias ssg='ssh -l gnatmail'
 alias ck='ssh ssh.gnat.com'
+alias cx='ssh xen2.gnat.com'
 alias ch='ssh ssh.eu.adacore.com'
 
 alias cl='cless'
