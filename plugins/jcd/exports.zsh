@@ -32,6 +32,13 @@ case `uname -s` in
     CYGWIN*)
         export TERM=xterm-256color
         ;;
+    Darwin|Linux)
+        if [[ $TMUX = '' ]]; then
+            export TERM=xterm-256color
+        else
+            export TERM=screen-256color
+        fi
+        ;;
     *)
         if [[ $TMUX = '' ]]; then
             export TERM=xterm-256color-italic

@@ -16,6 +16,8 @@ alias m='make -s'
 alias tmux='tmux -2'
 alias tree='tree -C'
 
+alias today="date '+%Y%m%d'"
+
 # Bugtool aliases
 alias bt='bugtool'
 alias tns='clear && $HOME/lstn'
