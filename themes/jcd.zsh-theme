@@ -177,33 +177,33 @@ function custom_build_r_prompt {
         #action="rebase"
 
         if [[ $has_stashes == true ]]; then
-            _write $left_bg_color 184 "$omg_has_stashes_symbol"
+            _write $left_bg_color 184 "$omg_has_stashes_symbol "
         fi
 
         # Mess
         if [[ $has_untracked_files == true ]]; then
-            _write $left_bg_color 241 " $omg_has_untracked_files_symbol"
+            _write $left_bg_color 241 "$omg_has_untracked_files_symbol "
         fi
 
         if [[ $has_modifications == true ]]; then
-            _write $left_bg_color 241 " $omg_has_modifications_symbol"
+            _write $left_bg_color 241 "$omg_has_modifications_symbol "
         fi
 
         if [[ $has_deletions == true ]]; then
-            _write $left_bg_color 241 " $omg_has_deletions_symbol"
+            _write $left_bg_color 241 "$omg_has_deletions_symbol "
         fi
 
         # Ready
         if [[ $has_adds == true ]]; then
-            _write $left_bg_color 32 " $omg_has_adds_symbol"
+            _write $left_bg_color 32 "$omg_has_adds_symbol "
         fi
 
         if [[ $has_modifications_cached == true ]]; then
-            _write $left_bg_color 32 " $omg_has_cached_modifications_symbol"
+            _write $left_bg_color 32 "$omg_has_cached_modifications_symbol "
         fi
 
         if [[ $has_deletions_cached == true ]]; then
-            _write $left_bg_color 32 " $omg_has_cached_deletions_symbol "
+            _write $left_bg_color 32 "$omg_has_cached_deletions_symbol "
         fi
 
         if [[ $ready_to_commit == true || $action == true ]]; then
