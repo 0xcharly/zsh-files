@@ -68,7 +68,7 @@ function custom_build_prompt {
     # Context
     if [[ $SESSION_TYPE != "local" ]]; then
         hosticon="  "
-        hostname="%m"
+        hostname="(%m) "
     else
         hosticon="   "
     fi
@@ -79,7 +79,7 @@ function custom_build_prompt {
     fi
 
     # Hostname
-    _write $host_bg_color $host_fg_color "$hosticon ($hostname) "
+    _write $host_bg_color $host_fg_color "$hosticon $hostname"
     _write $path_bg_color $host_bg_color ""
 
     # Repository name
