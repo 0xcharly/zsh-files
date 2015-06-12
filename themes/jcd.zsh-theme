@@ -1,12 +1,12 @@
 # vim:ft=zsh
 
-: ${omg_has_untracked_files_symbol:=''}        #                ?    
-: ${omg_has_adds_symbol:=''}
-: ${omg_has_deletions_symbol:=''}
-: ${omg_has_cached_deletions_symbol:=''}
-: ${omg_has_modifications_symbol:=''}
-: ${omg_has_cached_modifications_symbol:=''}
-: ${omg_ready_to_commit_symbol:=''}            #   →
+: ${omg_has_untracked_files_symbol:='?'}        #                ?    
+: ${omg_has_adds_symbol:=''}
+: ${omg_has_deletions_symbol:='-'}
+: ${omg_has_cached_deletions_symbol:='-'}
+: ${omg_has_modifications_symbol:=' '}
+: ${omg_has_cached_modifications_symbol:=' '}
+: ${omg_ready_to_commit_symbol:=' '}            #   →
 : ${omg_is_on_a_tag_symbol:=''}                #   
 : ${omg_needs_to_merge_symbol:='ᄉ'}
 : ${omg_detached_symbol:=''}
@@ -16,8 +16,8 @@
 : ${omg_rebase_tracking_branch_symbol:=''}     #   
 : ${omg_merge_tracking_branch_symbol:=''}      #  
 : ${omg_should_push_symbol:=''}                #    
-: ${omg_has_stashes_symbol:=''}
-: ${omg_has_action_in_progress_symbol:=''}     #                  
+: ${omg_has_stashes_symbol:=' '}
+: ${omg_has_action_in_progress_symbol:=' '}     #                  
 
 autoload -U colors && colors
 
@@ -76,9 +76,9 @@ function custom_build_prompt {
 
     # Path or repository name
     if [[ $is_a_git_repo == true ]]; then
-        _write 235 251 " $(basename `git rev-parse --show-toplevel 2> /dev/null`) "
+        _write 235 249 " $(basename `git rev-parse --show-toplevel 2> /dev/null`) "
     else
-        _write 235 251 ' %1~ '
+        _write 235 249 ' %1~ '
     fi
     _write 241 235 ""
 
@@ -119,9 +119,14 @@ function custom_build_r_prompt {
     local virtualenv_bg=""
 
     # Colors
-    local left_bg_color=236        # grey
-    local middle_bg_color=252      # white
-    local right_bg_color=208       # orange
+    local left_bg_color=235        # grey
+    local right_bg_color=252       # orange
+
+
+    local left_fg_color=247        # grey
+    local left_fg_sep_color=250    # white
+    local left_fg_sec_color=136    # orange
+    local right_fg_color=235       # dark
 
     local state_bg=""
     local virtualenv_bg=""
@@ -133,64 +138,74 @@ function custom_build_r_prompt {
 
     # Git repository
     if [[ $is_a_git_repo == true ]]; then
-        virtualenv_bg=$middle_bg_color
+        virtualenv_bg=$left_bg_color
 
         _write "" $left_bg_color ""
         _write $left_bg_color "" " "
         state_bg=$left_bg_color
 
+        # Used for testing
+        #has_stashes=true
+        #has_untracked_files=true
+        #has_modifications=true
+        #has_deletions=true
+        #has_adds=true
+        #has_modifications_cached=true
+        #has_deletions_cached=true
+        #ready_to_commit=true
+        #action="rebase"
+
         if [[ $has_stashes == true ]]; then
-            _write $left_bg_color yellow "$omg_has_stashes_symbol  "
+            _write $left_bg_color 184 "$omg_has_stashes_symbol"
         fi
 
         # Mess
         if [[ $has_untracked_files == true ]]; then
-            _write $left_bg_color red "$omg_has_untracked_files_symbol  "
+            _write $left_bg_color 241 " $omg_has_untracked_files_symbol"
         fi
 
         if [[ $has_modifications == true ]]; then
-            _write $left_bg_color red "$omg_has_modifications_symbol  "
+            _write $left_bg_color 241 " $omg_has_modifications_symbol"
         fi
 
         if [[ $has_deletions == true ]]; then
-            _write $left_bg_color red "$omg_has_deletions_symbol  "
+            _write $left_bg_color 241 " $omg_has_deletions_symbol"
         fi
 
         # Ready
         if [[ $has_adds == true ]]; then
-            _write $left_bg_color 251 "$omg_has_adds_symbol  "
+            _write $left_bg_color 32 " $omg_has_adds_symbol"
         fi
 
         if [[ $has_modifications_cached == true ]]; then
-            _write $left_bg_color 251 "$omg_has_cached_modifications_symbol  "
+            _write $left_bg_color 32 " $omg_has_cached_modifications_symbol"
         fi
 
         if [[ $has_deletions_cached == true ]]; then
-            _write $left_bg_color 251 "$omg_has_cached_deletions_symbol  "
+            _write $left_bg_color 32 " $omg_has_cached_deletions_symbol "
         fi
 
         if [[ $ready_to_commit == true || $action == true ]]; then
-            _write $left_bg_color 251 "⮃ "
+            _write $left_bg_color $left_fg_sep_color "⮃"
         fi
 
         # next operation
         if [[ $ready_to_commit == true ]]; then
-            _write $left_bg_color red "$omg_ready_to_commit_symbol  "
+            _write $left_bg_color 34 " $omg_ready_to_commit_symbol"
         fi
 
         if [[ -n $action ]]; then
-            _write $left_bg_color red "$omg_has_action_in_progress_symbol $action  "
+            _write $left_bg_color 34 " $omg_has_action_in_progress_symbol $action"
         fi
 
-        _write "$state_bg" $middle_bg_color ""
-        _write $middle_bg_color "" " "
+        _write "$left_bg_color" $left_fg_sep_color " ⮃ "
 
         if [[ $detached == true ]]; then
-            _write $middle_bg_color 26 "$omg_detached_symbol "
-            _write $middle_bg_color 235 " (${current_commit_hash:0:7})"
+            _write $left_bg_color $left_fg_sec_color "$omg_detached_symbol "
+            _write $left_bg_color $left_fg_color " (${current_commit_hash:0:7})"
         else
             if [[ $has_upstream == false ]]; then
-                _write $middle_bg_color 235 "-- ${omg_not_tracked_branch_symbol}  --  (${current_branch})"
+                _write $left_bg_color $left_fg_color "-- ${omg_not_tracked_branch_symbol}  --  (${current_branch})"
             else
                 if [[ $will_rebase == true ]]; then
                     local type_of_upstream=$omg_rebase_tracking_branch_symbol
@@ -199,25 +214,25 @@ function custom_build_r_prompt {
                 fi
 
                 if [[ $has_diverged == true ]]; then
-                    _write $middle_bg_color 26 "-${commits_behind} ${omg_has_diverged_symbol} +${commits_ahead}"
+                    _write $left_bg_color $left_fg_color "-${commits_behind} %F{$left_fg_sec_color}${omg_has_diverged_symbol}%F{$left_fg_color} +${commits_ahead}"
                 else
                     if [[ $commits_behind -gt 0 ]]; then
-                        _write $middle_bg_color 235 "-${commits_behind} %F{26}${omg_can_fast_forward_symbol}%F{black} --"
+                        _write $left_bg_color $left_fg_color "-${commits_behind} %F{$left_fg_sec_color}${omg_can_fast_forward_symbol}%F{black} --"
                     fi
                     if [[ $commits_ahead -gt 0 ]]; then
-                        _write $middle_bg_color 235 "-- %F{26}${omg_should_push_symbol}%F{black}  +${commits_ahead}"
+                        _write $left_bg_color $left_fg_color "-- %F{$left_fg_sec_color}${omg_should_push_symbol}%F{black}  +${commits_ahead}"
                     fi
                     if [[ $commits_ahead == 0 && $commits_behind == 0 ]]; then
-                         _write $middle_bg_color 235 " --   -- "
+                         _write $left_bg_color $left_fg_color " --   -- "
                     fi
 
                 fi
-                _write $middle_bg_color 235 " ⮃ $current_branch $type_of_upstream ${upstream//\/$current_branch/}"
+                _write $left_bg_color $left_fg_sep_color " ⮃ %F{$left_fg_color}$current_branch %F{$left_fg_sec_color}$type_of_upstream%F{black} "
             fi
         fi
 
         if [[ $is_on_a_tag == true ]]; then
-            _write $middle_bg_color 235 " ⮃ $omg_is_on_a_tag_symbol $tag_at_current_commit"
+            _write $left_bg_color $left_fg_sep_color " ⮃ %F{$left_fg_color}$omg_is_on_a_tag_symbol $tag_at_current_commit"
         fi
     fi
 
@@ -225,8 +240,8 @@ function custom_build_r_prompt {
     if [[ -n $virtualenv && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
         _write "$virtualenv_bg" $right_bg_color " "
         _write $right_bg_color "" " "
-        _write $right_bg_color 235 "`basename $virtualenv` "
+        _write $right_bg_color $right_fg_color "`basename $virtualenv` "
     else
-        _write $middle_bg_color "" " "
+        _write $left_bg_color "" " "
     fi
 }
