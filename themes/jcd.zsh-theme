@@ -54,36 +54,58 @@ function custom_build_prompt {
         esac
     fi
 
-    local local_prompt_color=150    # green
-    local error_prompt_color=166    # red
-    local repos_prompt_color=110    # blue
-    local cloud_prompt_color=172    # yellow
+    local host_bg_color=148      # green
+    local path_bg_color=235      # dark
+    local path_bg_sec_color=237  # ligther dark
+
+    local host_fg_color=235
+    local path_fg_color=247
+
+    local hostname=""
+    local hosticon=""
+    local hostcolor=""
 
     # Context
-    if [[ $retval -ne 0 ]]; then
-        _write $error_prompt_color 235 "   ($retval) "
-        _write 235 $error_prompt_color ""
-    elif [[ $is_a_git_repo == true ]]; then
-        _write $repos_prompt_color 235 "   "
-        _write 235 $repos_prompt_color ""
-    elif [[ $SESSION_TYPE == "local" ]]; then
-        _write $local_prompt_color 235 "   "
-        _write 235 $local_prompt_color ""
+    if [[ $SESSION_TYPE != "local" ]]; then
+        hosticon="  "
+        hostname="%m"
     else
-        _write $cloud_prompt_color 235 "   (%m) "
-        _write 235 $cloud_prompt_color ""
+        hosticon="   "
     fi
 
-    # Path or repository name
     if [[ $is_a_git_repo == true ]]; then
-        _write 235 249 " $(basename `git rev-parse --show-toplevel 2> /dev/null`) "
+        repopath="$(git rev-parse --show-toplevel 2> /dev/null)"
+        reponame="$(basename $repopath)"
+    fi
+
+    # Hostname
+    _write $host_bg_color $host_fg_color "$hosticon ($hostname) "
+    _write $path_bg_color $host_bg_color ""
+
+    # Repository name
+    if [[ $is_a_git_repo == true ]]; then
+        _write $path_bg_color $path_fg_color "   $reponame "
+        _write $path_fg_color $repos_prompt_color ""
+    fi
+
+    if [[ $retval -ne 0 ]]; then
+        end_prompt_color=124
+    else
+        end_prompt_color=241
+    fi
+
+    # Path
+    if [[ $is_a_git_repo == true ]]; then
+        if [[ $repopath != $PWD ]]; then
+            _write 235 249 '⮁ %1~ '
+        fi
     else
         _write 235 249 ' %1~ '
     fi
-    _write 241 235 ""
+    _write $end_prompt_color 235 ""
 
     # End
-    _write "" 241 ""
+    _write "" $end_prompt_color ""
 }
 
 function custom_build_r_prompt {
@@ -121,7 +143,6 @@ function custom_build_r_prompt {
     # Colors
     local left_bg_color=235        # grey
     local right_bg_color=252       # orange
-
 
     local left_fg_color=247        # grey
     local left_fg_sep_color=250    # white
