@@ -85,7 +85,6 @@ function custom_build_prompt {
     # Repository name
     if [[ $is_a_git_repo == true ]]; then
         _write $path_bg_color $path_fg_color "   $reponame "
-        _write $path_fg_color $repos_prompt_color ""
     fi
 
     if [[ $retval -ne 0 ]]; then
