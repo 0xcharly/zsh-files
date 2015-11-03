@@ -32,7 +32,7 @@ case `uname -s` in
     CYGWIN*)
         export TERM=xterm-256color
         ;;
-    Darwin|Linux)
+    FreeBSD|Linux)
         if [[ $TMUX = '' ]]; then
             export TERM=xterm-256color
         else
