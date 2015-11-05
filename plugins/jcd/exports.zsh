@@ -34,16 +34,16 @@ case `uname -s` in
         ;;
     FreeBSD|Linux)
         if [[ $TMUX = '' ]]; then
-            export TERM=xterm-256color
+            export TERM=xterm-256color-italic
         else
-            export TERM=screen-256color
+            export TERM=screen-256color-italic
         fi
         ;;
     *)
         if [[ $TMUX = '' ]]; then
-            export TERM=xterm-256color-italic
+            export TERM=xterm-256color
         else
-            export TERM=screen-256color-italic
+            export TERM=screen-256color
         fi
         ;;
 esac
