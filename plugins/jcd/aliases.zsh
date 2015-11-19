@@ -55,11 +55,8 @@ esac
 
 case `uname -s` in
     Linux|Darwin)
-        alias vi="vi -T xterm-256color-italic"
-        alias vim="vim -T xterm-256color-italic"
-        ;;
-    *)
-        alias ssh="TERM=xterm-256color ssh"
+        alias vi='vi -T "$TERM-italic"'
+        alias vim='vim -T "$TERM-italic"'
         ;;
 esac
 
