@@ -54,6 +54,15 @@ case `uname -s` in
 esac
 
 case `uname -s` in
+    Linux|Darwin)
+        alias vi="TERM=xterm-256color-italic vi"
+        ;;
+    *)
+        alias ssh="TERM=xterm-256color ssh"
+        ;;
+esac
+
+case `uname -s` in
     Darwin)
         alias finder='open -a Finder'
         alias ss='/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine &'
