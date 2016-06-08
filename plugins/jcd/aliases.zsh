@@ -29,7 +29,7 @@ function bt-mail {
         return 1
     fi
 
-    mutt -Rf `bugtool info $@ |head -n1`/comment
+    mutt -f `bugtool info $@ |head -n1`/comment
     return $?
 }
 
