@@ -1,27 +1,18 @@
-# SSH aliases
 alias ssh='TERM=xterm-256color ssh'
 alias ssr='ssh -l root'
 alias ssg='ssh -l gnatmail'
 alias ck='ssh ssh.gnat.com'
 alias cx='ssh xen2.gnat.com'
 alias ch='ssh ssh.eu.adacore.com'
+alias cm='ssh imap-eu.adacore.com'
 
 alias cl='cless'
 alias ,l='|less'
 
-# Applications aliases
-alias fix='open -a "MacPAR deLuxe"'  # Open a .par2 file
-
-alias m='make -s'
 alias tmux='tmux -2'
 alias tree='tree -C'
 
 alias today="date '+%Y%m%d'"
-
-# Bugtool aliases
-alias bt='bugtool'
-alias tns='clear && $HOME/lstn'
-alias follow='bugtool subscribe'
 
 function bt-mail {
     if [ $# != 1 ]; then
@@ -29,11 +20,15 @@ function bt-mail {
         return 1
     fi
 
-    mutt -f `bugtool info $@ |head -n1`/comment
+    mutt -f `bugtool info -d $@`/comment
     return $?
 }
 
+alias bt='bugtool'
+alias follow='bugtool subscribe'
+
 alias btm='bt-mail'
+alias comment='bt-mail'
 
 # Platform-specific aliases
 case `uname -s` in
@@ -57,12 +52,5 @@ case `uname -s` in
     Linux|Darwin)
         alias vi='vi -T "$TERM-italic"'
         alias vim='vim -T "$TERM-italic"'
-        ;;
-esac
-
-case `uname -s` in
-    Darwin)
-        alias finder='open -a Finder'
-        alias ss='/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine &'
         ;;
 esac
