@@ -8,6 +8,7 @@ alias cm='ssh imap-eu.adacore.com'
 
 alias cl='cless'
 alias ,l='|less'
+alias k='k -h'
 
 alias tmux='tmux -2'
 alias tree='tree -C'
