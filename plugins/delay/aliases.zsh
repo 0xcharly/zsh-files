@@ -12,6 +12,7 @@ alias k='k -h'
 
 alias tmux='tmux -2'
 alias tree='tree -C'
+alias vim-plugins-update='vim +PlugClean! +PlugInstall +PlugUpdate +qall'
 
 alias today="date '+%Y%m%d'"
 
