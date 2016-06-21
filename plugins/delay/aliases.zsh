@@ -15,6 +15,7 @@ alias tree='tree -C'
 alias vim-plugins-update='vim +PlugClean! +PlugInstall +PlugUpdate +qall'
 
 alias today="date '+%Y%m%d'"
+alias timestamp="date -u '%Y-%m-%dT%H%M%SZ'"
 
 function bt-mail {
     if [ $# != 1 ]; then
@@ -22,7 +23,9 @@ function bt-mail {
         return 1
     fi
 
-    mutt -f `bugtool info -d $@`/comment
+    tn=$1; shift
+    mutt -e 'set index_format = "mutt-fmt-date %[%s] |"' \
+        -f /reportd/gnatbugs/${tn:0:2}/$tn/comment $@
     return $?
 }
 
