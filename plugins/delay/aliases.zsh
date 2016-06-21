@@ -24,7 +24,7 @@ function bt-mail {
     fi
 
     tn=$1; shift
-    mutt -e 'set index_format = "mutt-fmt-date %[%s] |"' \
+    mutt -e 'set index_format = "mutt-index-fmt %[%s] |"' \
         -f /reportd/gnatbugs/${tn:0:2}/$tn/comment $@
     return $?
 }
