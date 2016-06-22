@@ -25,6 +25,8 @@ function bt-mail {
 
     tn=$1; shift
     mutt -e 'set index_format = "index-fmt-mutt %[%s] |"' \
+        -e 'color index white default "~O"' \
+        -e 'color index white default "~N"' \
         -f /reportd/gnatbugs/${tn:0:2}/$tn/comment $@
     return $?
 }
