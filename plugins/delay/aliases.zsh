@@ -15,7 +15,7 @@ alias tree='tree -C'
 alias vim-plugins-update='vim +PlugClean! +PlugInstall +PlugUpdate +qall'
 
 alias today="date '+%Y%m%d'"
-alias timestamp="date -u '%Y-%m-%dT%H%M%SZ'"
+alias timestamp="date -u '+%Y-%m-%dT%H%M%SZ'"
 
 function bt-mail {
     if [ $# != 1 ]; then
