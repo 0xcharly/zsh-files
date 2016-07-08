@@ -1,12 +1,11 @@
 # History configuration
 
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=8192
+SAVEHIST=8192
 HISTFILE=~/.history
 
-unsetopt append_history
-unsetopt share_history
-
+setopt inc_append_history
+setopt share_history
 setopt extended_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
