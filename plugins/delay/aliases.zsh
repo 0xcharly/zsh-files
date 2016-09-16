@@ -1,4 +1,3 @@
-alias ssh='TERM=xterm-256color ssh'
 alias ssr='ssh -l root'
 alias ssg='ssh -l gnatmail'
 alias ct='ssh ssh.gnat.com'
@@ -63,8 +62,6 @@ esac
 
 case `uname -s` in
     Linux|Darwin)
-        alias vi='vi -T "$TERM-italic"'
-        alias vim='vim -T "$TERM-italic"'
         alias k='k -h'
         ;;
 esac
