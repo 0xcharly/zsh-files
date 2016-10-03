@@ -1,5 +1,6 @@
 alias ssr='ssh -l root'
 alias ssg='ssh -l gnatmail'
+alias cw='ssh aron.gnat'
 alias ct='ssh ssh.gnat.com'
 alias cx='ssh xen2.gnat.com'
 alias ch='ssh ssh.eu.adacore.com'
