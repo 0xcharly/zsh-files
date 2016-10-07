@@ -1,45 +1,40 @@
 # User info
-export FULLNAME="Jean-Charles Delay"
-export EMAIL="delay@adacore.com"
-export EDITOR=vi
+FULLNAME="Charly Delay"
+EMAIL="delay@adacore.com"
+EDITOR="vi"
+
+export FULLNAME EMAIL EDITOR
 
 # Disallow automatic window renaming in tmux
-export DISABLE_AUTO_TITLE="true"
-export PYTHONSTARTUP="$HOME/.pythonrc"
+DISABLE_AUTO_TITLE="true"
+PYTHONSTARTUP="$HOME/.pythonrc"
+
+export DISABLE_AUTO_TITLE PYTHONSTARTUP
 
 # Disallow Oh-My-ZSH auto updates
-export DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_UPDATE
 
 # GPG
 GPG_TTY=$(tty)
 export GPG_TTY
 
 # MAVEN
-export M2_REPO="$HOME/.m2/repository"
+M2_REPO="$HOME/.m2/repository"
+export M2_REPO
 
 # Java
 if [ "x`uname -s`" = "xDarwin" ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
+    JAVA_HOME=$(/usr/libexec/java_home)
+    export JAVA_HOME
 fi
 
 # Locales
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG='en_US.UTF-8'
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+LANG='en_US.UTF-8'
 
-# Term
-case `uname -s` in
-    CYGWIN*)
-        export TERM=xterm-256color
-        ;;
-    *)
-        if [[ $TMUX = '' ]]; then
-            export TERM=xterm-256color
-        else
-            export TERM=screen-256color
-        fi
-        ;;
-esac
+export LC_CTYPE LC_ALL LANG
 
 # Colored less
 
@@ -67,4 +62,3 @@ export LESS_TERMCAP_us=$'\E[01;32m'         # begin underline
 
 # SVN & Git SSH config
 export SVN_SSH="ssh -l $USER -q"
-# export GIT_SSH="ssh -l $USER -q"

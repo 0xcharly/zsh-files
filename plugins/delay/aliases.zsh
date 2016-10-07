@@ -1,8 +1,5 @@
 alias ssr='ssh -l root'
 alias ssg='ssh -l gnatmail'
-alias cw='ssh aron.us'
-alias cu='ssh bastion.us'
-alias ce='ssh bastion.eu'
 
 alias tmux='tmux -2'
 alias tree='tree -C'
@@ -50,12 +47,10 @@ case `uname -s` in
   FreeBSD|Darwin)
     alias ls='ls -F -G'
     alias l='ls -F -G -a -l'
-    alias grep='grep --color=auto'
     ;;
   *)
     alias ls='ls -F --color'
     alias l='ls -alF --color'
-    alias grep='grep -T --color=auto'
     ;;
 esac
 
