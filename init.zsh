@@ -11,7 +11,6 @@ source $SOURCE/plugins/delay/aliases.zsh
 source $SOURCE/plugins/delay/exports.zsh
 source $SOURCE/plugins/delay/functions.zsh
 source $SOURCE/plugins/delay/history.zsh
-source $SOURCE/plugins/delay/grep.zsh
 source $SOURCE/plugins/delay/options.zsh
 source $SOURCE/plugins/delay/spectrum.zsh
 
